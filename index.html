@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form validation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    
+</head>
+<body>
+    <br>
+    <div class="container">
+        <div class="col-lg-8 m-auto d-block bg-light"><br>
+            <h2 class="text-center">Registration Form validation</h2><br>
+            <form action="#" onsubmit="return validation()">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" autocomplete="off" >
+                    <span id="name_msg" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username" autocomplete="off">
+                    <span id="username_msg" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email" autocomplete="off">
+                    <span id="email_msg" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter Password" name="pwd" autocomplete="off">
+                    <span id="pwd_msg" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_pwd">Confirm Password:</label>
+                    <input type="password" class="form-control" id="confirm_pwd" placeholder="Enter Password" name="confirm_pwd" autocomplete="off">
+                    <span id="pwd_msg_2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile No.:</label>
+                    <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile No." name="mobile" autocomplete="off">
+                    <span id="mobile_msg" class="text-danger"></span>
+                </div>
+                <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+                <br><br>
+            </form>
+        </div>
+    </div>
+    <br><br>
+</body>
+<script>
+
+    function validation(){
+
+        var name = document.getElementById('name').value;
+        var username = document.getElementById('username').value;
+        var email = document.getElementById('email').value;
+        var pwd = document.getElementById('pwd').value;
+        var confirm_pwd = document.getElementById('confirm_pwd').value;
+        var mobile = document.getElementById('mobile').value;
+
+        if(name == ""){
+            document.getElementById('name_msg').innerHTML = "Please fill the name field";
+            return false;
+        }
+        if((name.length <= 2) || (name.length > 25)){
+            document.getElementById('name_msg').innerHTML = "name length must be between 2 and 25";
+            return false;
+        }
+        if(!isNaN(name)){
+            document.getElementById('name_msg').innerHTML = "only characters are allowed";
+            return false;
+        }
+
+
+
+        if(username == ""){
+            document.getElementById('username_msg').innerHTML = "Please fill the username field";
+            return false;
+        }
+        if((username.length <= 2) || (username.length > 15)){
+            document.getElementById('username_msg').innerHTML = "username length must be between 2 and 15";
+            return false;
+        }
+
+
+        if(email == ""){
+            document.getElementById('email_msg').innerHTML = "Please fill the email field";
+            return false;
+        }
+        if(email.indexOf('@') <= 0){
+            document.getElementById('email_msg').innerHTML = "Invalid Email Address";
+            return false;
+        }
+        if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.')){
+            document.getElementById('email_msg').innerHTML = "Invalid Email Address";
+            return false;
+        }
+
+
+        if(pwd == ""){
+            document.getElementById('pwd_msg').innerHTML = "Please fill the password field";
+            return false;
+        }
+        if((pwd.length <= 5) || (pwd.length > 15)){
+            document.getElementById('pwd_msg').innerHTML = "password length must be between 5 and 15";
+            return false;
+        }
+
+        if(pwd!=confirm_pwd){
+            document.getElementById('pwd_msg').innerHTML = "password are not matching";
+            return false;
+        }
+
+        if(confirm_pwd == ""){
+            document.getElementById('pwd_msg_2').innerHTML = "Please fill the confirm password field";
+            return false;
+        }
+
+        if(mobile == ""){
+            document.getElementById('mobile_msg').innerHTML = "Please fill the mobile number field";
+            return false;
+        }
+        if(mobile.length != 10) {
+            document.getElementById('mobile_msg').innerHTML = "mobile number length must be 10 digits";
+            return false;
+        }
+        if(isNaN(mobile)){
+            document.getElementById('mobile_msg').innerHTML = "only number are allowed";
+            return false;
+        }
+
+        
+
+    }
+    
+</script>
+
+</html>
